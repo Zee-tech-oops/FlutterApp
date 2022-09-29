@@ -9,7 +9,7 @@ class HomePage extends StatelessWidget {
       //Properties of Scaffold
 
       //01--> BackGround Color
-      backgroundColor: Colors.blueGrey,
+      backgroundColor: Colors.white,
 
       //02--> AppBar
       appBar: AppBar(
@@ -45,7 +45,7 @@ class HomePage extends StatelessWidget {
           children: const <Widget>[
             DrawerHeader(
               decoration: BoxDecoration(color: Color.fromARGB(255, 68, 63, 65)),
-              child: Text("Hello Pakistan",style: TextStyle(color: Color.fromARGB(255, 255, 255, 255),fontSize: 23),),
+              child: Text("Hello Pakistan",style: TextStyle(color: Colors.white,fontSize: 23),),
             ),
             ListTile(title: Text("Home"),),
             ListTile(title: Text("Search"),)
