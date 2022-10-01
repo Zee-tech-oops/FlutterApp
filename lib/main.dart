@@ -4,33 +4,44 @@ import 'package:flutter_application_2/pages/loginPage.dart';
 import 'package:flutter_application_2/utils/routes.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-void main() {
+void main() 
+{
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget 
+{
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) 
+  {
     return 
-    MaterialApp(
+    MaterialApp
+    (
       // home:  const HomePage(),
 
       themeMode: ThemeMode.light,
-      theme: ThemeData(primarySwatch: Colors.deepOrange,
-       //For Google Founts must add dependies pub.dev
-      fontFamily: GoogleFonts.aBeeZee().fontFamily,
+
+      theme: ThemeData
+      (
+        primarySwatch: Colors.deepOrange,
+
+        // For Google Founts must add dependies pub.dev
+        fontFamily: GoogleFonts.aBeeZee().fontFamily,
       ),
-      darkTheme: ThemeData(
+
+      darkTheme: ThemeData
+      (
         brightness: Brightness.dark,
       ),
 
       initialRoute: "/login",
-      routes: {
+      routes: 
+      {
         "/": ((context) => const HomePage()),
-        MyRouts.loginRout:(context) => const LoginPage(),
-        MyRouts.homeRout:(context) => const HomePage()
+        MyRouts.loginRout:(context) =>  const LoginPage(),
+        MyRouts.homeRout:(context) =>  const HomePage()
       },
 
     );
