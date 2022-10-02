@@ -13,6 +13,9 @@ class LoginPage extends StatefulWidget
 class _LoginPageState extends State<LoginPage> 
 {
   String name = "";
+  bool changeButton = false;
+  
+  get duration => null;
 
   @override
   Widget build(BuildContext context) 
@@ -32,13 +35,13 @@ class _LoginPageState extends State<LoginPage>
 
             Image.asset
             (
-              ".dart_tool/assets/images/login_image.png", fit: BoxFit.cover
+              ".dart_tool/assets/images/login_image.png", width: 400, height: 400, //fit: BoxFit.cover
             ),
 
-            const SizedBox //Use as Empty Space box
-            ( 
-              height: 20.0,
-            ),
+            // const SizedBox //Use as Empty Space box
+            // ( 
+            //   height: 20.0,
+            // ),
 
             Text
             (
@@ -62,7 +65,6 @@ class _LoginPageState extends State<LoginPage>
                 
                 children: 
                 [
-
                   //for Text-BOX
                   TextFormField
                   (
@@ -112,26 +114,45 @@ class _LoginPageState extends State<LoginPage>
 
                   InkWell
                   (
-                    onTap: ()
+                    onTap: ()async
                     {
+                      setState(() 
+                      {
+                        changeButton = true;
+                      });
+                      await Future.delayed(const Duration(seconds: 1));
+                      // ignore: use_build_context_synchronously
                       Navigator.pushNamed(context, MyRouts.homeRout);
+
                     },
-                    
-                    child: Container
+
+                    child: AnimatedContainer 
                     (
-                      // color: Colors.deepPurple,
-                      height: 50,
-                      width: 150,
+                      duration: const Duration(seconds: 1),
+
+                      height: changeButton? 30 : 40, 
+                      width: changeButton? 30 : 120,
+                      
                       alignment: Alignment.center,
+
+                      // color: Colors.deepPurple, //Because we set decoration so no need here
                       decoration: BoxDecoration
                       (
-                          color: Colors.deepPurple,
-                          borderRadius: BorderRadius.circular(8),
+                        color: Colors.deepPurple,
+
+                        // shape: changeButton? BoxShape.circle: BoxShape.rectangle,
+
+                        borderRadius: BorderRadius.circular(changeButton? 30:8),
+                          
                       ),
-                  
-                  
-                      child: const Text("Login", style: TextStyle(color: Colors.white),),
+
+                      //conditional expretion
+                      child: changeButton? 
+                        const Icon(Icons.done,color: Colors.pink,)  : 
+                          const Text("Login", style: TextStyle(color: Colors.white),),
+
                     ),
+
                   )
 
                 ]
